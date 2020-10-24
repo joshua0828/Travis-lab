@@ -23,7 +23,8 @@ class DuckDuckGo(unittest.TestCase):
             print(line["Text"])
 
         for president in list_presidents:
-            self.assertTrue(any(president in line["Text"] for line in data["RelatedTopics"]))
+            lastname = president.split(" ")[-1]
+            self.assertTrue(any(lastname in line["Text"] for line in data["RelatedTopics"]), f"{president} is not found")
 
 
 president = open('presidents.txt', 'r')
